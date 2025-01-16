@@ -1,2 +1,2 @@
 # TIPSweb
-Built by ERMS
+Built by ERMS: Ethan Fan, Rama Janco, Milena Ptehafa, and Stephen Coomes
