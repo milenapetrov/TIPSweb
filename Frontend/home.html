@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  </head>
+  <body>
+    <div class="banner">
+      <h1>
+        <table align="center" class="logo">
+          <tbody><tr>
+            <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+            <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+            <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="t">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td>
+            <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="t">&nbsp;</td> <td class="t">&nbsp;</td>
+            <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="t">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+            <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="t">&nbsp;</td>
+            <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+            <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="t">&nbsp;</td> <td class="t">&nbsp;</td>
+            <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="t">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+            <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+            <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+            <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+            <td class="f">&nbsp;</td> <td class="t">&nbsp;</td> <td class="t">&nbsp;</td> <td class="t">&nbsp;</td> <td class="f">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+            <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+            <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td> <td class="f">&nbsp;</td>
+          </tr>
+        </tbody></table>  
+      </h1>
+      {% if session %}
+          <a href="/logout" class="login-btn">Logout</a>
+      {% else %}
+          <a href="/login" class="login-btn">Login</a>
+      {% endif %}
+  </div>
+
+  </body>
+</html>
