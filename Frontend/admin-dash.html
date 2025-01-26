@@ -1,0 +1,93 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="admin-panel">
+        <h1>Admin Dashboard</h1>
+        <div class="user-list">
+            <h2>User Management</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Email</th>
+                        <th>Last Login</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.user_id }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.last_login }}</td>
+                        <td>
+                            <button onclick="deleteUser('{{ user.user_id }}')">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="add-user-section">
+            <button onclick="openAddUserModal()" class="add-user-btn">Add New User</button>
+            
+            <div id="addUserModal" class="modal" style="display:none;">
+                <div class="modal-content">
+                    <h2>Add New User</h2>
+                    <input type="email" id="newUserEmail" placeholder="Email" required>
+                    <input type="password" id="newUserPassword" placeholder="Password" required>
+                    <button onclick="addUser()">Create User</button>
+                    <button onclick="closeAddUserModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function deleteUser(userId) {
+            if(confirm('Are you sure you want to delete this user?')) {
+                fetch('/admin/delete-user/' + userId, {
+                    method: 'DELETE'
+                }).then(response => {
+                    if(response.ok) location.reload();
+                });
+            }
+        }
+        function addUser() {
+            const email = document.getElementById('newUserEmail').value;
+            const password = document.getElementById('newUserPassword').value;
+
+            fetch('/admin/create-user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+                }).then(response => {
+                if(response.ok) {
+                    location.reload();
+                } else {
+                    alert('Failed to create user');
+                }
+            });
+        }
+        function openAddUserModal() {
+            document.getElementById('addUserModal').style.display = 'block';
+        }
+
+        function closeAddUserModal() {
+            document.getElementById('addUserModal').style.display = 'none';
+        }
+
+
+    </script>
+</body>
+</html>
