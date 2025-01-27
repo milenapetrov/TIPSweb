@@ -46,7 +46,7 @@ def validate_token(token):
         )
         return token_payload
     except (ExpiredSignatureError, JWTError, JWSError, JWTClaimsError) as error:
-        return None
+         return None
          
 def requires_admin(f):
     @wraps(f)
