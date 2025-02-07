@@ -24,7 +24,7 @@ if ENV_FILE:
     load_dotenv(ENV_FILE)
 
 
-jwks_endpoint = f"https://{env.get('AUTH0_DOMAIN')}/.well-known/jwks.json"
+jwks_endpoint = env.get("JWKS_ENDPOINT")
 jwks = requests.get(jwks_endpoint).json()["keys"]
 
 
@@ -58,7 +58,7 @@ def requires_admin(f):
         token_payload = validate_token(user["token"]["access_token"])
         if token_payload and "admin" in token_payload.get("permissions", []):
             return f(*args, **kwargs)
-        return redirect(url_for("home"))
+        return redirect(url_for("index"))
     return decorated
 
 
@@ -82,7 +82,7 @@ oauth.register(
 @app.route("/")
 def home():
     return render_template(
-        "home.html",
+        "index.html",
         session=session.get("user"),
         pretty=json.dumps(session.get("user"), indent=4),
     )
@@ -121,7 +121,7 @@ def logout():
         + "/v2/logout?"
         + urlencode(
             {
-                "returnTo": url_for("home", _external=True),
+                "returnTo": url_for("index", _external=True),
                 "client_id": env.get("AUTH0_CLIENT_ID"),
             },
             quote_via=quote_plus,
@@ -230,5 +230,5 @@ def create_user():
         }), 400
 
 if __name__ == "__main__":
-    #app.run(host="0.0.0.0", port=env.get("PORT", 3000))
-    app.run(debug=True, port=3000)
+    app.run(host="0.0.0.0", port=3000)
+
