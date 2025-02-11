@@ -81,7 +81,7 @@ oauth.register(
 
 # Controllers API
 @app.route("/")
-def home():
+def index():
     return render_template(
         "index.html",
         session=session.get("user"),
