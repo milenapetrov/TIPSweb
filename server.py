@@ -1,5 +1,6 @@
 
 import json
+import os
 from os import environ as env
 from typing import Annotated
 from urllib.parse import quote_plus, urlencode
@@ -230,5 +231,5 @@ def create_user():
         }), 400
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=3000)
-
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
